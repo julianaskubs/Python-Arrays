@@ -9,13 +9,14 @@ def main():
 
 class RunProgram:
     def __init__(self):
+        self.matrix = []
         while True:
             # para padronizar a qtde de espacos, juntar todos os caracteres e depois separa-los,
             # no caso da entrada estar com quantidades diferentes de espacos
             inp = input()
             inp = inp.replace(' ', '').replace('', ' ')
             len_inp = len(inp) - 1
-            inp = inp[1:len_inp]  # up to but not including
+            inp = inp[1:len_inp]
             self.user_input = inp
 
             if self.user_input == 'X':
@@ -48,11 +49,18 @@ class RunProgram:
         try:
             m = int(self.user_input[2])
             n = int(self.user_input[4])
-            print(type(m))
-            matrix = [[0 for x in range(m)] for y in range(n)]
-            # Sprint('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in matrix]))
+            self.matrix = [['A' for x in range(m)] for y in range(n)]  # 0
+            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to create a matrix')
+
+    # limpa a matriz
+    def clear_m(self):
+        for index, item in enumerate(self.matrix, 0):
+            for i_index, i_item in enumerate(item, 0):
+                item[i_index] = 0
+        print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
+
 
 
 if __name__ == '__main__':
