@@ -1,6 +1,9 @@
 # !/usr/bin/python
 # -*- coding: utf8 -*-
 
+from PIL import Image
+import numpy as np
+
 
 def main():
     RunProgram()
@@ -8,20 +11,10 @@ def main():
 
 class RunProgram:
     def __init__(self):
-        """
-        Para padronizar a quantidade de espacos que o usuario poderia digitar entre os caracteres,
-        foi criado uma string inp, que recebe a entrada, retira todos os espacos e depois coloca
-        apenas um espaco entre cada caracter.
-        """
         self.matrix = []
         while True:
             inp = input()
-            inp = inp.replace(' ', '').replace('', ' ')
-            # retirando os 2 espacos a mais em inp (um na pos 0 e um na ultima posicao).
-            last_pos = len(inp) - 1
-            inp = inp[1:last_pos]
             self.user_input = inp
-            print(len(self.user_input))  # APAGAR
 
             if len(self.user_input) > 0:
                 if self.user_input[0] == 'X':
@@ -35,19 +28,19 @@ class RunProgram:
         Essa funcao valida a entrada de acordo com a string user_input e
         entao chama a funcao correspondente ao comando.
         """
-        if self.user_input[0] == 'I' and len(self.user_input) == 5:
+        if self.user_input[0] == 'I':
             self.create()
-        elif self.user_input[0] == 'C' and len(self.user_input) == 1:
+        elif self.user_input[0] == 'C':
             self.clear()
-        elif self.user_input[0] == 'L' and len(self.user_input) == 7:
+        elif self.user_input[0] == 'L':
             self.color_pix()
-        elif self.user_input[0] == 'V' and len(self.user_input) == 9:
+        elif self.user_input[0] == 'V':
             self.draw_vert()
-        elif self.user_input[0] == 'H' and len(self.user_input) == 9:
+        elif self.user_input[0] == 'H':
             self.draw_horiz()
         elif self.user_input[0] == 'K':
             self.draw_rect()
-        elif self.user_input[0] == 'F' and len(self.user_input) == 7:
+        elif self.user_input[0] == 'F':
             self.fill_region()
         elif self.user_input[0] == 'S':
             self.save_img()
@@ -59,14 +52,17 @@ class RunProgram:
         """
         try:
             self.matrix = []
-            m = int(self.user_input[2])
-            n = int(self.user_input[4])
+            s = self.user_input
+            list_s = s.split(' ', 2)
+            m = int(list_s[1])
+            n = int(list_s[2])
             for x in range(n):
                 l = []
                 for y in range(m):
                     l.append(0)
                 self.matrix.append(l)
             # self.matrix = [[0 for x in range(m)] for y in range(n)]  # forma simplificada.
+            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to create a matrix')
 
@@ -86,14 +82,17 @@ class RunProgram:
         """
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
-            x = int(self.user_input[2]) - 1
-            y = int(self.user_input[4]) - 1
-            c = self.user_input[6]
+            s = self.user_input
+            list_s = s.split(' ', 3)
+            x = int(list_s[1]) - 1
+            y = int(list_s[2]) - 1
+            c = list_s[3]
             for i, item in enumerate(self.matrix):
                 if i == y:
                     for j, _item in enumerate(item):
                         if j == x:
                             item[j] = c
+            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -103,10 +102,13 @@ class RunProgram:
         """
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
-            x = int(self.user_input[2]) - 1
-            y1 = int(self.user_input[4]) - 1
-            y2 = int(self.user_input[6]) - 1
-            c = self.user_input[8]
+            s = self.user_input
+            list_s = s.split(' ', 4)
+            x = int(list_s[1]) - 1
+            y1 = int(list_s[2]) - 1
+            y2 = int(list_s[3]) - 1
+            c = list_s[4]
+
             for i, item in enumerate(self.matrix):
                 # se o indice da linha estiver entre y1 e y2
                 if y1 <= i <= y2:
@@ -114,6 +116,7 @@ class RunProgram:
                         # se o indice da coluna for igual a x
                         if j == x:
                             item[j] = c
+            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -124,10 +127,13 @@ class RunProgram:
         """
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
-            x1 = int(self.user_input[2]) - 1
-            x2 = int(self.user_input[4]) - 1
-            y = int(self.user_input[6]) - 1
-            c = self.user_input[8]
+            s = self.user_input
+            list_s = s.split(' ', 4)
+            x1 = int(list_s[1]) - 1
+            x2 = int(list_s[2]) - 1
+            y = int(list_s[3]) - 1
+            c = list_s[4]
+
             for i, item in enumerate(self.matrix):
                 # se o indice da linha for igual a y
                 if i == y:
@@ -135,6 +141,7 @@ class RunProgram:
                         # se o indice da coluna estiver entre x1 e x2
                         if x1 <= j <= x2:
                             item[j] = c
+            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -146,11 +153,13 @@ class RunProgram:
         """
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
-            x1 = int(self.user_input[2]) - 1
-            y1 = int(self.user_input[4]) - 1
-            x2 = int(self.user_input[6]) - 1
-            y2 = int(self.user_input[8]) - 1
-            c = self.user_input[10]
+            s = self.user_input
+            list_s = s.split(' ', 5)
+            x1 = int(list_s[1]) - 1
+            y1 = int(list_s[2]) - 1
+            x2 = int(list_s[3]) - 1
+            y2 = int(list_s[4]) - 1
+            c = list_s[5]
 
             for i, item in enumerate(self.matrix):
                 # se o indice da linha estiver entre y1 e y2
@@ -163,7 +172,6 @@ class RunProgram:
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
-
 
     def fill_region(self):
         """
@@ -185,9 +193,11 @@ class RunProgram:
         """
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
-            x = int(self.user_input[2]) - 1
-            y = int(self.user_input[4]) - 1
-            c = self.user_input[6]
+            s = self.user_input
+            list_s = s.split(' ', 3)
+            x = int(list_s[1]) - 1
+            y = int(list_s[2]) - 1
+            c = list_s[3]
             old_c = self.matrix[x][y]
             pos = []
             control = -1  # verificar o que acontece se alguem digita algo fora do contexto
@@ -228,6 +238,27 @@ class RunProgram:
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
+
+    def save_img(self):
+        """
+        Funcao que salva a imagem e imprime na tela a matriz atual.
+        """
+        try:
+            s = self.user_input
+            list_s = s.split(' ', 2)
+            img_nm = list_s[1]
+            print(img_nm)
+            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
+            c = np.asarray(self.matrix)
+            img = Image.fromarray(c, 'RGB')
+            img.save('images/{}'.format(img_nm))
+            img.show()
+        except Exception as e:
+            print('Paramaters not create a image')
+
+
+
+
 
 if __name__ == '__main__':
     main()
