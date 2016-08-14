@@ -139,7 +139,31 @@ class RunProgram:
             print('Paramaters not enough to update matrix')
 
     def draw_rect(self):
-        pass
+        """
+        Funcao que desenha um retangulo de cor C, x1,y1 e o canto superior esquerdo e
+        x2, y2 eh o canto inferior direito
+        x =  coluna, y = linha, c = cor.
+        """
+        try:
+            # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
+            x1 = int(self.user_input[2]) - 1
+            y1 = int(self.user_input[4]) - 1
+            x2 = int(self.user_input[6]) - 1
+            y2 = int(self.user_input[8]) - 1
+            c = self.user_input[10]
+
+            for i, item in enumerate(self.matrix):
+                # se o indice da linha estiver entre y1 e y2
+                if y1 <= i <= y2:
+                    for j, _item in enumerate(item):
+                        # se o indice da coluna estiver entre x1 e x2
+                        if x1 <= j <= x2:
+                            item[j] = c
+
+            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
+        except:
+            print('Paramaters not enough to update matrix')
+
 
     def fill_region(self):
         """
