@@ -255,7 +255,10 @@ class RunProgram:
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
             c = np.asarray(self.matrix)
             img = Image.fromarray(c, 'RGB')
-            img.save('../images/{}'.format(img_nm))
+            try:
+                img.save('../images/{}'.format(img_nm))
+            except:
+                img.save('{}'.format(img_nm))
             img.show()
         except Exception as e:
             print('Paramaters not enough to create image')
