@@ -14,8 +14,7 @@ class RunProgram:
         self.matrix = matrix
         if prompt:
             while True:
-                inp = input()
-                self.user_input = inp
+                self.user_input = input()
 
                 if len(self.user_input) > 0:
                     if self.user_input[0] == 'X':
@@ -32,7 +31,7 @@ class RunProgram:
     def val_input(self):
         """
         Essa funcao valida a entrada de acordo com a string user_input e
-        entao chama a funcao correspondente ao comando.
+        chama a funcao correspondente ao comando.
         """
         if self.user_input[0] == 'I':
             self.create()
