@@ -106,7 +106,8 @@ REEEEEEERR
 REEEEEEERR
 RRRRRRRRRR
 """
-from main.matrix import RunProgram
+from matrix import RunProgram
+
 
 def main():
     RunProgram()

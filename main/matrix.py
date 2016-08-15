@@ -58,6 +58,7 @@ class RunProgram:
         try:
             self.matrix = []
             s = self.user_input
+            s = s.strip()
             list_s = s.split(' ', 2)
             m = int(list_s[1])
             n = int(list_s[2])
@@ -86,10 +87,11 @@ class RunProgram:
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
             s = self.user_input
+            s = s.strip()
             list_s = s.split(' ', 3)
             x = int(list_s[1]) - 1
             y = int(list_s[2]) - 1
-            c = list_s[3]
+            c = str(list_s[3])
             for i, item in enumerate(self.matrix):
                 if i == y:
                     for j, _item in enumerate(item):
@@ -106,11 +108,12 @@ class RunProgram:
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
             s = self.user_input
+            s = s.strip()
             list_s = s.split(' ', 4)
             x = int(list_s[1]) - 1
             y1 = int(list_s[2]) - 1
             y2 = int(list_s[3]) - 1
-            c = list_s[4]
+            c = str(list_s[4])
 
             for i, item in enumerate(self.matrix):
                 # se o indice da linha estiver entre y1 e y2
@@ -130,11 +133,12 @@ class RunProgram:
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
             s = self.user_input
+            s = s.strip()
             list_s = s.split(' ', 4)
             x1 = int(list_s[1]) - 1
             x2 = int(list_s[2]) - 1
             y = int(list_s[3]) - 1
-            c = list_s[4]
+            c = str(list_s[4])
 
             for i, item in enumerate(self.matrix):
                 # se o indice da linha for igual a y
@@ -155,12 +159,13 @@ class RunProgram:
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
             s = self.user_input
+            s = s.strip()
             list_s = s.split(' ', 5)
             x1 = int(list_s[1]) - 1
             y1 = int(list_s[2]) - 1
             x2 = int(list_s[3]) - 1
             y2 = int(list_s[4]) - 1
-            c = list_s[5]
+            c = str(list_s[5])
 
             for i, item in enumerate(self.matrix):
                 # se o indice da linha estiver entre y1 e y2
@@ -193,10 +198,11 @@ class RunProgram:
         try:
             # o indice na matriz comeca com 0, subtrair 1 para localizar o elemento em sua posicao
             s = self.user_input
+            s = s.strip()
             list_s = s.split(' ', 3)
             x = int(list_s[1]) - 1
             y = int(list_s[2]) - 1
-            c = list_s[3]
+            c = str(list_s[3])
             old_c = self.matrix[x][y]
             pos = []
             control = -1  # verificar o que acontece se alguem digita algo fora do contexto
@@ -242,8 +248,9 @@ class RunProgram:
         """
         try:
             s = self.user_input
+            s = s.strip()
             list_s = s.split(' ', 2)
-            img_nm = list_s[1]
+            img_nm = str(list_s[1])
             print(img_nm)
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
             c = np.asarray(self.matrix)
