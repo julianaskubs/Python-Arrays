@@ -67,10 +67,10 @@ class RunProgram:
                 for y in range(m):
                     l.append(0)
                 self.matrix.append(l)
-            # self.main = [[0 for x in range(m)] for y in range(n)]  # forma simplificada.
+            # self.matrix = [[0 for x in range(m)] for y in range(n)]  # forma simplificada.
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to create a main')
+            print('Paramaters not enough to create matrix')
 
     def clear(self):
         """
@@ -101,7 +101,7 @@ class RunProgram:
                             break
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update main')
+            print('Paramaters not enough to update matrix')
 
     def draw_vert(self):
         """
@@ -125,7 +125,7 @@ class RunProgram:
                             item[j] = c
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update main')
+            print('Paramaters not enough to update matrix')
 
     def draw_horiz(self):
         """
@@ -150,7 +150,7 @@ class RunProgram:
                             item[j] = c
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update main')
+            print('Paramaters not enough to update matrix')
 
     def draw_rect(self):
         """
@@ -178,7 +178,7 @@ class RunProgram:
 
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update main')
+            print('Paramaters not enough to update matrix')
 
     def fill_region(self):
         """
@@ -244,7 +244,7 @@ class RunProgram:
 
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update main')
+            print('Paramaters not enough to update matrix')
 
     def save_img(self):
         """
@@ -261,7 +261,7 @@ class RunProgram:
             img.save('images/{}'.format(img_nm))
             img.show()
         except Exception as e:
-            print('Paramaters not create a image')
+            print('Paramaters not enough to create image')
 
 if __name__ == '__main__':
     main()
