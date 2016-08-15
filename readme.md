@@ -7,7 +7,7 @@ Para executá-lo, é necessário a instalação de alguns requisitos:
 
 Caso esteja com alguma complicação para rodá-lo, seguem algumas dicas:
 
-1) Verifique se o pip está instalado e se a versão é estavel:
+1) Verifique se o pip está instalado e se a versão é estável:
 
     Exemplo:
     pip --version
