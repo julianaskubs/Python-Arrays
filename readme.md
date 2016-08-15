@@ -4,12 +4,12 @@ por esse motivo, não deve ser reproduzido para o mesmo fim.
 O programa executa algumas tarefas de manipulação de matrizes.
 
 Para executá-lo, é necessário ter instalado:
- Python 3.4+
- Pacotes do arquivo requirements.txt
+Python 3.4+
+Pacotes do arquivo requirements.txt
 
 Caso esteja com alguma complicação para rodá-lo, seguem algumas dicas:
 
-1) Verifique se você tem o pip instalado e se a versao esta estavel
+1) Verifique se o pip está instalado e se a versão é estavel:
 
     Exemplo:
     pip --version
