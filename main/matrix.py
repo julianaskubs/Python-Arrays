@@ -10,18 +10,24 @@ def main():
 
 
 class RunProgram:
-    def __init__(self):
-        self.matrix = []
-        while True:
-            inp = input()
-            self.user_input = inp
+    def __init__(self, prompt=True, cmd=None, matrix=[]):
+        self.matrix = matrix
+        if prompt:
+            while True:
+                inp = input()
+                self.user_input = inp
 
+                if len(self.user_input) > 0:
+                    if self.user_input[0] == 'X':
+                        break
+                    else:
+                        if self.user_input[0] in ('I', 'C', 'L', 'V', 'H', 'K', 'F', 'S'):
+                            self.val_input()
+        else:
+            self.user_input = cmd
             if len(self.user_input) > 0:
-                if self.user_input[0] == 'X':
-                    break
-                else:
-                    if self.user_input[0] in ('I', 'C', 'L', 'V', 'H', 'K', 'F', 'S'):
-                        self.val_input()
+                if self.user_input[0] in ('I', 'C', 'L', 'V', 'H', 'K', 'F', 'S'):
+                    self.val_input()
 
     def val_input(self):
         """
@@ -61,10 +67,10 @@ class RunProgram:
                 for y in range(m):
                     l.append(0)
                 self.matrix.append(l)
-            # self.matrix = [[0 for x in range(m)] for y in range(n)]  # forma simplificada.
+            # self.main = [[0 for x in range(m)] for y in range(n)]  # forma simplificada.
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to create a matrix')
+            print('Paramaters not enough to create a main')
 
     def clear(self):
         """
@@ -92,9 +98,10 @@ class RunProgram:
                     for j, _item in enumerate(item):
                         if j == x:
                             item[j] = c
+                            break
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update matrix')
+            print('Paramaters not enough to update main')
 
     def draw_vert(self):
         """
@@ -118,7 +125,7 @@ class RunProgram:
                             item[j] = c
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update matrix')
+            print('Paramaters not enough to update main')
 
     def draw_horiz(self):
         """
@@ -143,7 +150,7 @@ class RunProgram:
                             item[j] = c
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update matrix')
+            print('Paramaters not enough to update main')
 
     def draw_rect(self):
         """
@@ -171,7 +178,7 @@ class RunProgram:
 
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update matrix')
+            print('Paramaters not enough to update main')
 
     def fill_region(self):
         """
@@ -237,7 +244,7 @@ class RunProgram:
 
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
-            print('Paramaters not enough to update matrix')
+            print('Paramaters not enough to update main')
 
     def save_img(self):
         """
@@ -255,10 +262,6 @@ class RunProgram:
             img.show()
         except Exception as e:
             print('Paramaters not create a image')
-
-
-
-
 
 if __name__ == '__main__':
     main()
