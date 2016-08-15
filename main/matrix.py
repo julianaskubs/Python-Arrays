@@ -67,8 +67,6 @@ class RunProgram:
                 for y in range(m):
                     l.append(0)
                 self.matrix.append(l)
-            # self.matrix = [[0 for x in range(m)] for y in range(n)]  # forma simplificada.
-            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to create matrix')
 
@@ -99,7 +97,6 @@ class RunProgram:
                         if j == x:
                             item[j] = c
                             break
-            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -123,7 +120,6 @@ class RunProgram:
                         # se o indice da coluna for igual a x
                         if j == x:
                             item[j] = c
-            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -148,7 +144,6 @@ class RunProgram:
                         # se o indice da coluna estiver entre x1 e x2
                         if x1 <= j <= x2:
                             item[j] = c
-            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -175,8 +170,6 @@ class RunProgram:
                         # se o indice da coluna estiver entre x1 e x2
                         if x1 <= j <= x2:
                             item[j] = c
-
-            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -241,8 +234,6 @@ class RunProgram:
                 for j, elem in enumerate(self.matrix[line]):
                     if elem == old_c:
                         self.matrix[line][j] = c
-
-            print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
         except:
             print('Paramaters not enough to update matrix')
 
@@ -258,7 +249,7 @@ class RunProgram:
             print('\n'.join([''.join(['{:1}'.format(item) for item in row]) for row in self.matrix]))
             c = np.asarray(self.matrix)
             img = Image.fromarray(c, 'RGB')
-            img.save('images/{}'.format(img_nm))
+            img.save('../images/{}'.format(img_nm))
             img.show()
         except Exception as e:
             print('Paramaters not enough to create image')
