@@ -23,6 +23,5 @@ Caso esteja com alguma complicação para rodá-lo, seguem algumas dicas:
     pip install --upgrade setuptools
     sudo apt-get install build-essential
 
-Obs: por se tratar de um desafio empresarial, este programa não deve ser reproduzido para o mesmo fim.
 
 Se desejar, entre em contato por email: julianaskubs@gmail.com
